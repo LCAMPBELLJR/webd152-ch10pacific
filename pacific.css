@@ -129,13 +129,14 @@ footer {
 }
 table {
   border-bottom: 1px solid #1976d2;
-  border-collapse: collapse;
+  border-collapse: separate; /* Change this style to separate because I liked the look of the white border between the cells */
 }
 th {
   background-color: #1976d2;
   color: #fff;
 }
-td {
+td,
+th {
   padding: 0.5em;
   /* border: 2px solid #39c;  */
 }
@@ -145,6 +146,10 @@ td {
 .text {
   text-align: left; /* te: */
 }
+.text {
+  text-align: left; /* ta:l */
+}
+
 tr:nth-last-of-type(odd) {
   background-color: #ffcd6f; /* bgc#ffcd6f */
 }
@@ -154,120 +159,95 @@ form {
 }
 input,
 textarea {
-  margin-bottom: 0.5em; /* mb0.5em */
+  margin-bottom: 0.5em; /* mb.5em */
 }
 
-@media (min-width: 600px) {
+@media (max-width: 200px) {
   header {
     background-image: none;
   }
   #homehero,
   #yurthero,
   #trailhero {
-    background-size: auto;
+    background-size: auto; /* Table style for smartphone device */
   }
-}
-/* Table styles for smartphone devices */
-#special table {
-  display: block; /* db */
-  border-bottom: none; /* bd:n */
-}
-#special td,
-#special th {
-  display: block; /* db:n */
-}
-/* Hide the table header elements */
-#special thead {
-  display: none; /* db */
-}
-/* Use the ::before pseudo-element to inject these labels before each row of cell content. It is 
-often used to add cosmetic content to an element with the content property is 
-a handy trick for revealing extra bits of data hidden in HTML. Make sure you add the colon after
-the word and the space and then the closing quotation mark. */
-td.package::before {
-  content: "Package:";
-}
-td.description::before {
-  content: "Description:";
-}
-td.nights::before {
-  content: "Nights:";
-}
-td.cost::before {
-  content: "Cost:";
-}
-td.package,
-td.description,
-td.nights,
-td.cost {
-  padding-left: 40%; /* pl35% */
-  position: relative; /* pos:r */
-  text-align: left; /* ta:l */
-  font-size: 4vw; /* Relative length units specify a length relative to another length property.
-Relative length units scale better between different rendering medium. vw = relative to 1% of the
-height of the viewport = the browser window size. If the viewport is 50cm wide, 1vw = 0,
-5cm */
-}
-td::before {
-  position: absolute; /* pos:a */
-  top: 15px; /*t6 */
-  left: 0.5em; /* l.5em */
-  font-weight: bold; /* fwb */
-  color: #1976d2; /* c#1976d2 */
-}
-td:last-of-type {
-  border-bottom: 2px solid #1b69b2; /* bb2-solid#1b69b2 */
-}
-form {
-  display: flex;
-  flex-flow: column nowrap;
-}
-input,
-textarea {
-  margin-bottom: 0.5em; /* mb0.5em */
-}
-@media (min-width: 600px) {
-}
-
-nav ul {
-  display: flex; /* df */
-  flex-direction: row; /*fdr */
-  flex-wrap: nowrap;
-  justify-content: space-around;
-}
-nav li {
-  border-bottom: none; /* bbn */
-}
-.flow {
-  display: flex; /*df */
-  flex-direction: row; /*fdr */
-}
-section {
-  flex-direction: row; /*fdr */
-  margin-right: 1em;
-}
-form {
-  display: grid;
-  grid-template-columns: 6em 1fr;
-  gap: 1em;
-  max-width: 30em;
-  width: 60%;
-}
-input[type="submit"] {
-  grid-column: 2/3;
-  width: 9em;
-}
-
-@media (min-width: 600px) {
-  #wrapper {
-    margin: auto; /* m;a */
-    width: 80%;
-    border: 1px solid #002171; /* bd1-solid #002171 */
-    box-shadow: 3px 3px 3px #002171;
+  #special table {
+    display: block; /* db */
+    border-bottom: none; /* bd:n */
   }
-  nav {
-    text-align: left; /* ta;1 */
-    padding-left: 1em; /* pl1em */
+  #special td,
+  #special th {
+    display: block; /* db */
+  } /* Hide the table header elements */
+  #special thead {
+    display: none; /* dn */
+  } /* Use the ::before pseudo-element to inject these labels before each row of cell content. 
+  It is often used to add cosmetic content to an element with the content property. 
+  The content property is a handy trick for revealing extra bits of data hidden in HTML. 
+  Make sure you add the colon after the word and the space and then the closing quotation mark. */
+
+  td.package::before {
+    content: "Package:";
+  }
+  td.description::before {
+    content: "Description:";
+  }
+  td.nights::before {
+    content: "Nights:";
+  }
+  td.cost::before {
+    content: "Cost:";
+  }
+  td.package,
+  td.description,
+  td.nights,
+  td.cost {
+    padding-left: 35%; /* pl35% */
+    position: relative; /* pos:r */
+    text-align: left; /* ta:l */
+    font-size: 4vw; /* Relative length units specify a length relative to another length property. 
+  Relative length units scale better between different rendering medium. vw = relative to 1% of the height of the viewport. 
+  Viewport = the browser window size. If the viewport is 50cm wide, 1vw = 0.5cm. */
+  }
+  td::before {
+    position: absolute; /* pos:a */
+    top: 10px; /* t6 */
+    left: 0.5em; /* l.5em */
+    font-weight: bold; /* fwb */
+    color: #1976d2; /* c#1976d2 */
+  }
+  td:last-of-type {
+    border-bottom: 2px solid #1b69b2; /*bb2-solid#1b69b2 */
+  }
+  @media (min-width: 1024px) {
+    nav ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+    }
+  }
+  nav li {
+    border-bottom: none; /* bbn */
+  }
+  .flow {
+    display: flex; /*df */
+    flex-direction: row; /*fdr */
+  }
+  section {
+    flex-direction: row; /*fdr */
+    margin-right: 1em;
+  }
+  form {
+    display: grid;
+    grid-template-columns: 6em 1fr;
+    gap: 1em;
+    max-width: 30em;
+    width: 60%;
+  }
+  input[type="submit"] {
+    grid-column: 2/3;
+    width: 9em;
   }
   @supports (display: grid) {
     nav ul {
