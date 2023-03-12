@@ -127,9 +127,10 @@ footer {
   background-size: 100% 100%; /* bgz100%100% */
   height: 300px; /* h300*/
 }
-table {
-  border-bottom: 1px solid #1976d2;
-  border-collapse: separate; /* Change this style to separate because I liked the look of the white border between the cells */
+#special th #special table {
+  border-bottom: 2px solid #1976d2; /* This is the top of packages */
+  border-collapse: separate;
+  /* Change this style to separate because I liked the look of the white border between the cells */
 }
 th {
   background-color: #1976d2;
@@ -139,6 +140,7 @@ td,
 th {
   padding: 0.5em;
   /* border: 2px solid #39c;  */
+  border-bottom: 2px solid #39c;
 }
 td {
   text-align: center; /* tac */
@@ -146,137 +148,104 @@ td {
 .text {
   text-align: left; /* te: */
 }
-.text {
-  text-align: left; /* ta:l */
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 tr:nth-last-of-type(odd) {
   background-color: #ffcd6f; /* bgc#ffcd6f */
 }
-form {
-  display: flex;
-  flex-flow: column nowrap;
-}
-input,
-textarea {
-  margin-bottom: 0.5em; /* mb.5em */
-}
 
-@media (max-width: 200px) {
+@media (max-width: 600px) {
   header {
     background-image: none;
   }
-  #homehero,
-  #yurthero,
-  #trailhero {
-    background-size: auto; /* Table style for smartphone device */
-  }
-  #special table {
-    display: block; /* db */
-    border-bottom: none; /* bd:n */
-  }
-  #special td,
-  #special th {
-    display: block; /* db */
-  } /* Hide the table header elements */
-  #special thead {
-    display: none; /* dn */
-  } /* Use the ::before pseudo-element to inject these labels before each row of cell content. 
+} /* Use the ::before pseudo-element to inject these labels before each row of cell content. 
   It is often used to add cosmetic content to an element with the content property. 
   The content property is a handy trick for revealing extra bits of data hidden in HTML. 
   Make sure you add the colon after the word and the space and then the closing quotation mark. */
 
-  td.package::before {
-    content: "Package:";
-  }
-  td.description::before {
-    content: "Description:";
-  }
-  td.nights::before {
-    content: "Nights:";
-  }
-  td.cost::before {
-    content: "Cost:";
-  }
-  td.package,
-  td.description,
-  td.nights,
-  td.cost {
-    padding-left: 35%; /* pl35% */
-    position: relative; /* pos:r */
-    text-align: left; /* ta:l */
-    font-size: 4vw; /* Relative length units specify a length relative to another length property. 
+td.package,
+td.description,
+td.nights,
+td.cost {
+  padding-left: 5%; /* pl35% */
+  position: relative; /* pos:r */
+  text-align: left; /* ta:l */
+  font-size: 1vw; /* Relative length units specify a length relative to another length property. 
   Relative length units scale better between different rendering medium. vw = relative to 1% of the height of the viewport. 
   Viewport = the browser window size. If the viewport is 50cm wide, 1vw = 0.5cm. */
+}
+td::before {
+  position: absolute; /* pos:a */
+  top: 10px; /* t6 */
+  left: 0.5em; /* l.5em */
+  font-weight: bold; /* fwb */
+  color: #1976d2; /* c#1976d2 */
+}
+td:last-of-type {
+  border-bottom: 2px solid #1b69b2;
+}
+@media (min-width: 1024px) {
+  #wrapper {
+    margin: auto; /* m;a */
+    width: 80%;
+    border: 1px solid #002171; /* bd1-solid #002171 */
+    box-shadow: 3px 3px 3px #002171;
   }
-  td::before {
-    position: absolute; /* pos:a */
-    top: 10px; /* t6 */
-    left: 0.5em; /* l.5em */
-    font-weight: bold; /* fwb */
-    color: #1976d2; /* c#1976d2 */
+  nav {
+    text-align: left; /* ta;1 */
+    padding-left: 1em; /* pl1em */
   }
-  td:last-of-type {
-    border-bottom: 2px solid #1b69b2; /*bb2-solid#1b69b2 */
+}
+.flow {
+  display: flex; /*df */
+  flex-direction: row; /*fdr */
+}
+section {
+  flex-direction: row; /*fdr */
+  margin-right: 1em;
+}
+form {
+  display: grid;
+  grid-template-columns: 6em 1fr;
+  gap: 1em;
+  max-width: 30em;
+  width: 60%;
+}
+input[type="submit"] {
+  grid-column: 2/3;
+  width: 9em;
+}
+@supports (display: grid) {
+  nav ul {
+    flex-direction: column;
+    padding-top: 1em;
   }
-  @media (min-width: 1024px) {
-    nav ul {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: space-around;
-    }
+  .hero {
+    grid-area: hero;
   }
-  nav li {
-    border-bottom: none; /* bbn */
+  header {
+    grid-area: header;
   }
-  .flow {
-    display: flex; /*df */
-    flex-direction: row; /*fdr */
+  nav {
+    grid-area: nav;
   }
-  section {
-    flex-direction: row; /*fdr */
-    margin-right: 1em;
+  main {
+    grid-area: main;
   }
-  form {
+  footer {
+    grid-area: footer;
+  }
+  #wrapper {
     display: grid;
-    grid-template-columns: 6em 1fr;
-    gap: 1em;
-    max-width: 30em;
-    width: 60%;
-  }
-  input[type="submit"] {
-    grid-column: 2/3;
-    width: 9em;
-  }
-  @supports (display: grid) {
-    nav ul {
-      flex-direction: column;
-      padding-top: 1em;
-    }
-    .hero {
-      grid-area: hero;
-    }
-    header {
-      grid-area: header;
-    }
-    nav {
-      grid-area: nav;
-    }
-    main {
-      grid-area: main;
-    }
-    footer {
-      grid-area: footer;
-    }
-    #wrapper {
-      display: grid;
-      grid-template:
-        "header header"
-        "nav hero"
-        "nav main"
-        "nav footer"
-        / 180px 1fr;
-    }
+    grid-template:
+      "header header"
+      "nav hero"
+      "nav main"
+      "nav footer"
+      / 180px 1fr;
   }
 }
